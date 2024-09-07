@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rubel Sutradhar's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            background: transparent;
+            padding: 40px 20px;
+            border-bottom: 5px solid #00aaff;
+            color: #fff;
+        }
+
+        header img {
+            border-radius: 50%;
+            width: 180px;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            animation: zoomIn 5s infinite;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header h1 {
+            margin: 20px 0 0;
+            font-size: 2.5rem;
+            color: #fff;
+            animation: headerAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes headerAnimation {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background: #1a1a1a;
+            margin: 20px 0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        section:hover {
+            background: #2a2a2a;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: #00aaff;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover::before {
+            transform: scaleX(1);
+        }
+
+        h2 {
+            color: #00aaff;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #00aaff;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        h2:hover {
+            color: #fff;
+        }
+
+        h2:hover::after {
+            transform: scaleX(1);
+            background: #fff;
+        }
+
+        p {
+            color: #e0e0e0;
+            transition: color 0.3s ease;
+        }
+
+        p:hover {
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .button, .social-links a {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            background: #00aaff;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .button::before, .social-links a::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover, .social-links a:hover {
+            background: #007aff;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .button:hover::before, .social-links a:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #222;
+            border-radius: 8px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #00aaff;
+            color: #fff;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: transparent;
+            color: #00aaff;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 2px #fff;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <header>
+        <div class="container">
+            <img src="https://media.discordapp.net/attachments/1029793075301720196/1281229691180810314/Rubel Sutradhar.png?ex=66dc4722&is=66daf5a2&hm=dc90c258c90bc10588e27b753a6bfbc1493012c71a59a17bab9ac63a8e62e971&=&format=webp&quality=lossless&width=670&height=670" alt="Rubel Sutradhar" class="profile-picture">
+            <h1>Rubel Sutradhar's Portfolio 🌟</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about-me">
+            <h2>About Me</h2>
+            <p>👋 Hi there! I'm Rubel Sutradhar, a 19-year-old aspiring entrepreneur with a passion for learning new skills and watching anime. I am the founder of Ascendancy, a thriving Discord community, and currently, I'm focused on mastering DropShipping while working on my Notion OS. With 3 years of experience as a Notion expert, I'm also building a YouTube channel where I will create tutorials to help others build their own Notion OS and explore the full potential of Notion.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>🚀 Explore my projects and the work I've done as a Notion expert, and discover how I can help you organize your life or business with custom Notion setups.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <p>💼 Here's a snapshot of my technical toolkit: Java (Spring, Hibernate), Unreal Engine, Unity 3D, SQL, NoSQL (MongoDB), and more. I'm always on the lookout for new technologies to master!</p>
+        </section>
+
+        <section id="contact
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>📬 Let's connect! Whether you have a question or just want to say hi, I'm all ears. Reach out to me, and let's start a conversation that could lead to our next big adventure.</p>
+            <a href="mailto:muntasimbillah281@gmail.com" class="button">Email Me</a>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ayanIslam.281" target="_blank" aria-label="Facebook">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://discord.gg/uSStHepegr" target="_blank" aria-label="Discord">
+                    <img src="https://logodownload.org/wp-content/uploads/2017/11/discord-logo-1-1.png" alt="Discord Logo" style="width: 24px; height: 24px;">
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Rubel Sutradhar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
